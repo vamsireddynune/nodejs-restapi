@@ -354,6 +354,7 @@ h6 {
 
 p {
   margin: 0 0 var(--space-16) 0;
+  font-size: 1.3rem;
 }
 
 a {
@@ -1178,7 +1179,7 @@ body {
 }
 
 .nav-title {
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   font-weight: 500;
   color: var(--text-primary);
   margin-bottom: var(--space-xs);
