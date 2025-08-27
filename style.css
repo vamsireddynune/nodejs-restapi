@@ -807,7 +807,7 @@ select.form-control {
   --bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
   /* Typography */
-  --font-primary: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-primary: "Open Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
   /* Spacing */
