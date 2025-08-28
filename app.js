@@ -298,7 +298,23 @@ class FluxonPresentation {
     // Announce for accessibility
     this.announceSection();
 
+    // Hide hands-on code example behind a local storage flag
+    if (sectionNumber === 9) {
+      this.checkHandsOnExample();
+    }
+
     return true;
+  }
+
+  checkHandsOnExample() {
+    const enabledHandsOnExample = localStorage.getItem("enableHandsOnExample");
+    if (enabledHandsOnExample === "true") {
+      document
+        .getElementById("handsOnCodeExample")
+        .classList.remove("hidden");
+    } else {
+      document.getElementById("handsOnCodeExample").classList.add("hidden");
+    }
   }
 
   loadSectionContent(sectionNumber) {
@@ -843,8 +859,8 @@ app.listen(3000, () => {
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="complete-code">
+
+                    <div class="complete-code hidden" id="handsOnCodeExample">
                         <h3>💻 Complete API Implementation</h3>
                         <div class="code-container">
                             <pre><code class="language-javascript">const express = require('express');

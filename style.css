@@ -1958,6 +1958,9 @@ body {
 .endpoint-item.delete .method-badge {
   background: var(--method-delete);
 }
+.endpoint-item.patch .method-badge {
+  background: var(--method-patch);
+}
 
 .description {
   color: var(--text-secondary);
@@ -2478,4 +2481,8 @@ button:focus-visible,
     --border-color: rgba(255, 255, 255, 0.5);
     --text-secondary: rgba(255, 255, 255, 0.9);
   }
+}
+
+.hidden {
+  display: none !important;
 }
