@@ -309,9 +309,7 @@ class FluxonPresentation {
   checkHandsOnExample() {
     const enabledHandsOnExample = localStorage.getItem("enableHandsOnExample");
     if (enabledHandsOnExample === "true") {
-      document
-        .getElementById("handsOnCodeExample")
-        .classList.remove("hidden");
+      document.getElementById("handsOnCodeExample").classList.remove("hidden");
     } else {
       document.getElementById("handsOnCodeExample").classList.add("hidden");
     }
@@ -770,10 +768,6 @@ app.listen(3000, () => {
                                 <span class="feature-tag">Read tasks (GET)</span>
                                 <span class="feature-tag">Update tasks (PUT/PATCH)</span>
                                 <span class="feature-tag">Delete tasks (DELETE)</span>
-                                <span class="feature-tag">Input validation</span>
-                                <span class="feature-tag">Error handling</span>
-                                <span class="feature-tag">Filtering & search</span>
-                                <span class="feature-tag">Statistics endpoint</span>
                             </div>
                         </div>
                     </div>
@@ -827,11 +821,6 @@ app.listen(3000, () => {
                                 <code>/api/tasks</code>
                                 <span class="description">Get all tasks (supports filtering)</span>
                             </div>
-                            <div class="endpoint-item get">
-                                <span class="method-badge">GET</span>
-                                <code>/api/tasks/:id</code>
-                                <span class="description">Get specific task by ID</span>
-                            </div>
                             <div class="endpoint-item post">
                                 <span class="method-badge">POST</span>
                                 <code>/api/tasks</code>
@@ -852,18 +841,14 @@ app.listen(3000, () => {
                                 <code>/api/tasks/:id</code>
                                 <span class="description">Delete task</span>
                             </div>
-                            <div class="endpoint-item get">
-                                <span class="method-badge">GET</span>
-                                <code>/api/stats</code>
-                                <span class="description">Get task statistics</span>
-                            </div>
                         </div>
                     </div>
 
                     <div class="complete-code hidden" id="handsOnCodeExample">
                         <h3>💻 Complete API Implementation</h3>
                         <div class="code-container">
-                            <pre><code class="language-javascript">const express = require('express');
+                            <pre><code class="language-javascript">const express = require("express");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -880,243 +865,83 @@ app.use((req, res, next) => {
   next();
 });
 
-// ============================================
-// DATA STORAGE (In-Memory Database)
-// ============================================
-
+// Add tasks array to simulate a database
 let tasks = [
   {
     id: 1,
-    title: 'Set up restaurant opening checklist',
-    description: 'Create checklist for daily opening procedures',
+    title: "Complete PRD",
+    description: "Complete the Product Requirements Document",
     completed: false,
-    priority: 'high',
-    createdAt: new Date('2024-01-15T08:00:00Z'),
-    updatedAt: new Date('2024-01-15T08:00:00Z')
   },
   {
     id: 2,
-    title: 'Update menu prices',
-    description: 'Review and update menu prices for new season',
+    title: "Run boilerplate",
+    description: "Set up the initial project structure",
     completed: false,
-    priority: 'medium',
-    createdAt: new Date('2024-01-15T09:00:00Z'),
-    updatedAt: new Date('2024-01-15T09:00:00Z')
   },
-  {
-    id: 3,
-    title: 'Train new server',
-    description: 'Complete onboarding training for new team member',
-    completed: true,
-    priority: 'high',
-    createdAt: new Date('2024-01-14T10:00:00Z'),
-    updatedAt: new Date('2024-01-15T16:00:00Z')
-  }
 ];
 
-let nextId = 4;
-
-// ============================================
-// HELPER FUNCTIONS
-// ============================================
-
-// Validate task data
-const validateTask = (taskData, isUpdate = false) => {
-  const errors = [];
-  
-  if (!isUpdate || taskData.title !== undefined) {
-    if (!taskData.title || typeof taskData.title !== 'string') {
-      errors.push('Title is required and must be a string');
-    } else if (taskData.title.trim().length < 3) {
-      errors.push('Title must be at least 3 characters long');
-    }
-  }
-  
-  if (taskData.priority !== undefined) {
-    const validPriorities = ['low', 'medium', 'high'];
-    if (!validPriorities.includes(taskData.priority)) {
-      errors.push('Priority must be low, medium, or high');
-    }
-  }
-  
-  if (taskData.completed !== undefined && typeof taskData.completed !== 'boolean') {
-    errors.push('Completed must be a boolean (true or false)');
-  }
-  
-  return errors;
-};
-
-// Find task by ID
-const findTaskById = (id) => {
-  const taskId = parseInt(id);
-  return tasks.find(task => task.id === taskId);
-};
-
-// ============================================
-// API ROUTES
-// ============================================
-
-// Root endpoint - API information
-app.get('/', (req, res) => {
-  res.json({
-    message: 'Task Management API',
-    version: '1.0.0',
-    endpoints: {
-      'GET /api/tasks': 'Get all tasks (supports filtering)',
-      'GET /api/tasks/:id': 'Get specific task',
-      'POST /api/tasks': 'Create new task',
-      'PUT /api/tasks/:id': 'Update entire task',
-      'PATCH /api/tasks/:id': 'Partially update task',
-      'DELETE /api/tasks/:id': 'Delete task',
-      'GET /api/stats': 'Get task statistics'
-    }
-  });
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
 });
 
-// GET /api/tasks - Retrieve all tasks (with filtering)
-app.get('/api/tasks', (req, res) => {
-  try {
-    let filteredTasks = [...tasks];
-    
-    // Filter by completion status
-    if (req.query.completed !== undefined) {
-      const isCompleted = req.query.completed.toLowerCase() === 'true';
-      filteredTasks = filteredTasks.filter(task => task.completed === isCompleted);
-    }
-    
-    // Filter by priority
-    if (req.query.priority) {
-      filteredTasks = filteredTasks.filter(task => 
-        task.priority.toLowerCase() === req.query.priority.toLowerCase()
-      );
-    }
-    
-    // Search in title and description
-    if (req.query.search) {
-      const searchTerm = req.query.search.toLowerCase();
-      filteredTasks = filteredTasks.filter(task =>
-        task.title.toLowerCase().includes(searchTerm) ||
-        task.description.toLowerCase().includes(searchTerm)
-      );
-    }
-    
-    // Sort tasks (newest first by default)
-    filteredTasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-    
-    res.json({
-      success: true,
-      count: filteredTasks.length,
-      totalTasks: tasks.length,
-      data: filteredTasks
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Error retrieving tasks',
-      error: error.message
-    });
-  }
+app.get("/tasks", (req, res) => {
+  res.json(tasks);
 });
 
-// POST /api/tasks - Create new task
-app.post('/api/tasks', (req, res) => {
-  try {
-    const validationErrors = validateTask(req.body);
-    if (validationErrors.length > 0) {
-      return res.status(400).json({
-        success: false,
-        message: 'Validation failed',
-        errors: validationErrors
-      });
-    }
-    
-    const newTask = {
-      id: nextId++,
-      title: req.body.title.trim(),
-      description: req.body.description ? req.body.description.trim() : '',
-      completed: false,
-      priority: req.body.priority || 'medium',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    };
-    
-    tasks.push(newTask);
-    
-    res.status(201).json({
-      success: true,
-      message: 'Task created successfully',
-      data: newTask
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Error creating task',
-      error: error.message
-    });
+app.post("/tasks", (req, res) => {
+  const { title, description } = req.body;
+  if (!title || !description) {
+    return res
+      .status(400)
+      .json({ error: "Title and description are required" });
   }
+  const newTask = {
+    id: tasks.length + 1,
+    title,
+    description,
+    completed: false,
+  };
+
+  tasks.push(newTask);
+  res.status(201).json(newTask);
 });
 
-// DELETE /api/tasks/:id - Delete task
-app.delete('/api/tasks/:id', (req, res) => {
-  try {
-    const taskIndex = tasks.findIndex(t => t.id === parseInt(req.params.id));
-    
-    if (taskIndex === -1) {
-      return res.status(404).json({
-        success: false,
-        message: \`Task with ID \${req.params.id} not found\`
-      });
-    }
-    
-    const deletedTask = tasks.splice(taskIndex, 1)[0];
-    
-    res.json({
-      success: true,
-      message: 'Task deleted successfully',
-      data: deletedTask
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Error deleting task',
-      error: error.message
-    });
+app.put("/tasks/:id", (req, res) => {
+  const taskId = parseInt(req.params.id);
+  const { title, description, completed } = req.body;
+  const task = tasks.find((t) => t.id === taskId);
+
+  if (!task) {
+    return res.status(404).json({ error: "Task not found" });
   }
+  if (title !== undefined) task.title = title;
+  if (description !== undefined) task.description = description;
+  if (completed !== undefined) task.completed = completed;
+  res.json(task);
 });
 
-// GET /api/stats - Get task statistics
-app.get('/api/stats', (req, res) => {
-  try {
-    const stats = {
-      total: tasks.length,
-      completed: tasks.filter(task => task.completed).length,
-      pending: tasks.filter(task => !task.completed).length,
-      byPriority: {
-        high: tasks.filter(task => task.priority === 'high').length,
-        medium: tasks.filter(task => task.priority === 'medium').length,
-        low: tasks.filter(task => task.priority === 'low').length
-      },
-      completionRate: tasks.length > 0 
-        ? Math.round((tasks.filter(task => task.completed).length / tasks.length) * 100)
-        : 0
-    };
-    
-    res.json({ success: true, data: stats });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Error retrieving statistics',
-      error: error.message
-    });
+app.delete("/tasks/:id", (req, res) => {
+  const taskId = parseInt(req.params.id);
+  const taskIndex = tasks.findIndex((t) => t.id === taskId);
+  if (taskIndex === -1) {
+    return res.status(404).json({ error: "Task not found" });
   }
+  tasks.splice(taskIndex, 1);
+  res.status(204).send();
 });
 
-// 404 handler for undefined routes
-app.use('*', (req, res) => {
-  res.status(404).json({
-    success: false,
-    message: \`Route \${req.method} \${req.originalUrl} not found\`
-  });
+app.patch("/tasks/:id", (req, res) => {
+  if (req.body.completed === undefined) {
+    return res.status(400).json({ error: "Completed status is required" });
+  }
+  const taskId = parseInt(req.params.id);
+  const task = tasks.find((t) => t.id === taskId);
+  if (!task) {
+    return res.status(404).json({ error: "Task not found" });
+  }
+  task.completed = req.body.completed;
+  res.json(task);
 });
 
 // ============================================
@@ -1127,7 +952,9 @@ app.listen(PORT, () => {
   console.log('\\n🚀 Task Management API Server Started!');
   console.log(\`📍 Server running on http://localhost:\${PORT}\`);
   console.log('\\n💡 Use Postman, curl, or your browser to test the API!');
-});</code></pre>
+});
+
+</code></pre>
                         </div>
                     </div>
                     
