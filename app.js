@@ -433,7 +433,7 @@ console.log('Second - Sync');
                 <div class="content-grid">
                     <div class="engine-intro">
                         <h3>🚀 What is V8?</h3>
-                        <p>V8 is Google's open-source JavaScript engine written in C++ that compiles JavaScript directly to machine code for maximum performance. It's like a master chef who instantly translates recipes into precise, efficient cooking actions.</p>
+                        <p>V8 is Google's open-source JavaScript engine written in C++ that compiles JavaScript directly to machine code for maximum performance.</p>
                         
                         <div class="trivia-card">
                             <h4>🏎️ Fun Trivia</h4>
@@ -674,7 +674,7 @@ console.log('Second - Sync');
                 <div class="content-grid">
                     <div class="express-intro">
                         <h3>🚄 What is Express.js?</h3>
-                        <p>Express.js is a minimal, fast, and flexible Node.js web application framework that provides a robust set of features for building web and mobile applications. It's like having a pre-equipped restaurant kitchen with all the tools, equipment, and staff training already in place!</p>
+                        <p>Express.js is a minimal, fast, and flexible Node.js web application framework that provides a robust set of features for building web and mobile applications.</p>
                     </div>
                     
                     <div class="express-benefits">

@@ -1795,7 +1795,8 @@ body {
 .component-item h4,
 .feature-item h4,
 .concept-item h4,
-.benefit-item h4 {
+.benefit-item h4,
+.use-case-item h4 {
   color: var(--text-primary);
   font-weight: 700;
   margin-bottom: var(--space-sm);
@@ -1832,7 +1833,8 @@ body {
 }
 
 .trivia-card h4,
-.creator-trivia h4 {
+.creator-trivia h4,
+.project-features h4 {
   color: var(--fluxon-accent);
   margin-bottom: var(--space-sm);
 }
@@ -2006,7 +2008,7 @@ body {
   color: var(--fluxon-primary);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-md);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
   border: 1px solid rgba(107, 70, 193, 0.2);
 }
