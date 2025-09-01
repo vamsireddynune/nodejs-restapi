@@ -2160,7 +2160,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: var(--space-xl);
+  /* padding: var(--space-xl); */
 }
 
 .modal.hidden {
@@ -2171,10 +2171,10 @@ body {
   background: var(--bg-secondary);
   border-radius: var(--radius-2xl);
   border: 1px solid var(--border-color);
-  max-width: 800px;
-  width: 100%;
-  max-height: 80vh;
-  overflow: hidden;
+  /* max-width: 800px;
+  width: 100%; */
+  /* max-height: 80vh;
+  overflow: hidden; */
   animation: modalSlideIn 0.3s ease;
 }
 
@@ -2221,11 +2221,11 @@ body {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.modal-body {
+/* .modal-body {
   padding: var(--space-xl);
   overflow-y: auto;
   max-height: 60vh;
-}
+} */
 
 .modal-body h4 {
   color: var(--fluxon-primary);

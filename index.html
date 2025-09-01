@@ -1,521 +1,621 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introduction to Node.js and REST API - Fluxon x NIE Mysore</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="presentation-container">
-        <!-- Front Page -->
-        <div class="front-page active" id="frontPage">
-            <div class="hero-background">
-                <div class="hero-content">
-                    <div class="hero-header">
-                        <div class="bootcamp-badge">
-                            <span class="badge-text">Fluxon x NIE Mysore Bootcamp</span>
-                        </div>
-                        <h1 class="hero-title">Introduction to Node.js and REST API</h1>
-                        <p class="hero-subtitle">Building Foundations for Web Development</p>
-                    </div>
-
-                    <div class="partnership-logos">
-                        <div class="logo-item">
-                            <div class="logo-placeholder fluxon"><img
-                                    src="https://www.fluxon.com/_astro/logo-fluxon.D06aLsfY_Z1wb4uX.svg"
-                                    alt="Fluxon Logo" />
-                            </div>
-                        </div>
-                        <div class="partnership-symbol">×</div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder nie"><img
-                                    src="https://cdn.prod.website-files.com/67fdfe35d4387726dad21cae/6832deea92b6ed77eca1465a_removebg.svg"
-                                    alt="NIE Mysore Logo" /></div>
-                        </div>
-                    </div>
-
-                    <button class="cta-button" id="startPresentation">
-                        <span>Start Presentation</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12h14m-7-7 7 7-7 7" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </button>
-                </div>
+      <!-- Front Page -->
+      <div class="front-page active" id="frontPage">
+        <div class="hero-background">
+          <div class="hero-content">
+            <div class="hero-header">
+              <div class="bootcamp-badge">
+                <span class="badge-text">Fluxon x NIE Mysore Bootcamp</span>
+              </div>
+              <h1 class="hero-title">Introduction to Node.js and REST API</h1>
+              <p class="hero-subtitle">
+                Building Foundations for Web Development
+              </p>
             </div>
+
+            <div class="partnership-logos">
+              <div class="logo-item">
+                <div class="logo-placeholder fluxon">
+                  <img
+                    class="fluxon-img"
+                    src="https://www.fluxon.com/_astro/logo-fluxon.D06aLsfY_Z1wb4uX.svg"
+                    alt="Fluxon Logo"
+                  />
+                </div>
+              </div>
+              <div class="partnership-symbol">×</div>
+              <div class="logo-item">
+                <div class="logo-placeholder nie">
+                  <img
+                    src="https://cdn.prod.website-files.com/67fdfe35d4387726dad21cae/6832deea92b6ed77eca1465a_removebg.svg"
+                    alt="NIE Mysore Logo"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <button class="cta-button" id="startPresentation">
+              <span>Start Presentation</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 12h14m-7-7 7 7-7 7"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Sidebar -->
+      <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="brand-logo">
+            <img
+              src="https://www.fluxon.com/_astro/logo-fluxon.D06aLsfY_Z1wb4uX.svg"
+              alt="Fluxon Logo"
+            />
+            <div class="partnership-symbol">×</div>
+            <img
+              style="width: 30px"
+              src="https://cdn.prod.website-files.com/67fdfe35d4387726dad21cae/6832deea92b6ed77eca1465a_removebg.svg"
+              alt="NIE Mysore Logo"
+            />
+          </div>
+          <h2>Node.js & REST API</h2>
         </div>
 
-        <!-- Navigation Sidebar -->
-        <nav class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="brand-logo">
-                    <img src="https://www.fluxon.com/_astro/logo-fluxon.D06aLsfY_Z1wb4uX.svg" alt="Fluxon Logo" />
-                    <div class="partnership-symbol">×</div>
-                    <img style="width: 30px;"
-                        src="https://cdn.prod.website-files.com/67fdfe35d4387726dad21cae/6832deea92b6ed77eca1465a_removebg.svg"
-                        alt="NIE Mysore Logo" />
-                </div>
-                <h2>Node.js & REST API</h2>
+        <div class="nav-sections">
+          <div class="nav-item active" data-section="1">
+            <span class="nav-number">01</span>
+            <div class="nav-content">
+              <span class="nav-title">Restaurant Analogy</span>
+              <span class="nav-icon">🍽️</span>
+            </div>
+          </div>
+          <div class="nav-item" data-section="2">
+            <span class="nav-number">02</span>
+            <div class="nav-content">
+              <span class="nav-title">Why Backend?</span>
+              <span class="nav-icon">⚙️</span>
+            </div>
+          </div>
+          <div class="nav-item" data-section="3">
+            <span class="nav-number">03</span>
+            <div class="nav-content">
+              <span class="nav-title">REST API</span>
+              <span class="nav-icon">🔗</span>
+            </div>
+          </div>
+          <div class="nav-item" data-section="4">
+            <span class="nav-number">04</span>
+            <div class="nav-content">
+              <span class="nav-title">Async JavaScript</span>
+              <span class="nav-icon">🔄</span>
+            </div>
+          </div>
+          <div class="nav-item" data-section="5">
+            <span class="nav-number">05</span>
+            <div class="nav-content">
+              <span class="nav-title">V8 Engine</span>
+              <span class="nav-icon">🚀</span>
+            </div>
+          </div>
+          <div class="nav-item" data-section="6">
+            <span class="nav-number">06</span>
+            <div class="nav-content">
+              <span class="nav-title">Node.js</span>
+              <span class="nav-icon">🟢</span>
+            </div>
+          </div>
+          <div class="nav-item" data-section="7">
+            <span class="nav-number">07</span>
+            <div class="nav-content">
+              <span class="nav-title">NPM</span>
+              <span class="nav-icon">📦</span>
+            </div>
+          </div>
+          <div class="nav-item" data-section="8">
+            <span class="nav-number">08</span>
+            <div class="nav-content">
+              <span class="nav-title">Express.js</span>
+              <span class="nav-icon">🚄</span>
+            </div>
+          </div>
+          <div class="nav-item" data-section="9">
+            <span class="nav-number">09</span>
+            <div class="nav-content">
+              <span class="nav-title">Build REST API</span>
+              <span class="nav-icon">🛠️</span>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Main Content Area -->
+      <main class="main-content">
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <!-- Section 1: Restaurant Analogy -->
+        <section class="section active" id="section1">
+          <div class="section-header">
+            <span class="section-badge">Section 01</span>
+            <h1>
+              Restaurant Analogy for Web Application Development
+              <span style="color: white" id="transcriptToggle">ⓘ</span>
+            </h1>
+            <p class="section-subtitle">
+              Understanding complex web architecture through familiar dining
+              experiences
+            </p>
+          </div>
+
+          <div class="content-grid">
+            <div class="intro-card">
+              <h3>🍽️ Think of a Restaurant</h3>
+              <p>
+                Understanding web application development becomes intuitive when
+                we compare it to how a restaurant operates. Every component has
+                a specific role, and they all work together seamlessly to serve
+                customers.
+              </p>
+              <div class="workflow-visual">
+                <div class="workflow-step">Customer views menu</div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">Waiter takes order</div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">Kitchen prepares food</div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">Waiter serves food</div>
+              </div>
             </div>
 
-            <div class="nav-sections">
-                <div class="nav-item active" data-section="1">
-                    <span class="nav-number">01</span>
-                    <div class="nav-content">
-                        <span class="nav-title">Restaurant Analogy</span>
-                        <span class="nav-icon">🍽️</span>
-                    </div>
+            <div class="restaurant-grid">
+              <div class="restaurant-card frontend">
+                <div class="card-header">
+                  <div class="card-icon">👥</div>
+                  <h4>Dining Area + Menu</h4>
+                  <span class="role-badge">Frontend</span>
                 </div>
-                <div class="nav-item" data-section="2">
-                    <span class="nav-number">02</span>
-                    <div class="nav-content">
-                        <span class="nav-title">Why Backend?</span>
-                        <span class="nav-icon">⚙️</span>
-                    </div>
+                <p>
+                  Where customers sit and view options. The user interface that
+                  presents information and accepts input from users.
+                </p>
+                <div class="responsibilities">
+                  <div class="responsibility-item">User Interface Design</div>
+                  <div class="responsibility-item">User Experience</div>
+                  <div class="responsibility-item">Visual Presentation</div>
+                  <div class="responsibility-item">Input Collection</div>
                 </div>
-                <div class="nav-item" data-section="3">
-                    <span class="nav-number">03</span>
-                    <div class="nav-content">
-                        <span class="nav-title">REST API</span>
-                        <span class="nav-icon">🔗</span>
-                    </div>
+                <div class="tech-stack">
+                  <span class="tech-tag">HTML</span>
+                  <span class="tech-tag">CSS</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">Vue.js</span>
                 </div>
-                <div class="nav-item" data-section="4">
-                    <span class="nav-number">04</span>
-                    <div class="nav-content">
-                        <span class="nav-title">Async JavaScript</span>
-                        <span class="nav-icon">🔄</span>
-                    </div>
+              </div>
+
+              <div class="restaurant-card api">
+                <div class="card-header">
+                  <div class="card-icon">🧑‍💼</div>
+                  <h4>Waiter</h4>
+                  <span class="role-badge">API</span>
                 </div>
-                <div class="nav-item" data-section="5">
-                    <span class="nav-number">05</span>
-                    <div class="nav-content">
-                        <span class="nav-title">V8 Engine</span>
-                        <span class="nav-icon">🚀</span>
-                    </div>
+                <p>
+                  Carries requests from customers to kitchen and brings
+                  responses back. The communication layer between frontend and
+                  backend.
+                </p>
+                <div class="responsibilities">
+                  <div class="responsibility-item">
+                    Request/Response Handling
+                  </div>
+                  <div class="responsibility-item">Data Transfer</div>
+                  <div class="responsibility-item">Communication Protocol</div>
+                  <div class="responsibility-item">Error Handling</div>
                 </div>
-                <div class="nav-item" data-section="6">
-                    <span class="nav-number">06</span>
-                    <div class="nav-content">
-                        <span class="nav-title">Node.js</span>
-                        <span class="nav-icon">🟢</span>
-                    </div>
+                <div class="tech-stack">
+                  <span class="tech-tag">REST</span>
+                  <span class="tech-tag">GraphQL</span>
+                  <span class="tech-tag">JSON</span>
+                  <span class="tech-tag">HTTP</span>
                 </div>
-                <div class="nav-item" data-section="7">
-                    <span class="nav-number">07</span>
-                    <div class="nav-content">
-                        <span class="nav-title">NPM</span>
-                        <span class="nav-icon">📦</span>
-                    </div>
+              </div>
+
+              <div class="restaurant-card backend">
+                <div class="card-header">
+                  <div class="card-icon">👨‍🍳</div>
+                  <h4>Kitchen + Chefs</h4>
+                  <span class="role-badge">Backend</span>
                 </div>
-                <div class="nav-item" data-section="8">
-                    <span class="nav-number">08</span>
-                    <div class="nav-content">
-                        <span class="nav-title">Express.js</span>
-                        <span class="nav-icon">🚄</span>
-                    </div>
+                <p>
+                  Where orders are processed and food is prepared. The
+                  server-side logic and processing engine of applications.
+                </p>
+                <div class="responsibilities">
+                  <div class="responsibility-item">Business Logic</div>
+                  <div class="responsibility-item">Data Processing</div>
+                  <div class="responsibility-item">Authentication</div>
+                  <div class="responsibility-item">Server Management</div>
                 </div>
-                <div class="nav-item" data-section="9">
-                    <span class="nav-number">09</span>
-                    <div class="nav-content">
-                        <span class="nav-title">Build REST API</span>
-                        <span class="nav-icon">🛠️</span>
-                    </div>
+                <div class="tech-stack">
+                  <span class="tech-tag">Node.js</span>
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Java</span>
+                  <span class="tech-tag">Express.js</span>
                 </div>
+              </div>
+
+              <div class="restaurant-card database">
+                <div class="card-header">
+                  <div class="card-icon">🏪</div>
+                  <h4>Pantry</h4>
+                  <span class="role-badge">Database</span>
+                </div>
+                <p>
+                  Storage for all ingredients and supplies. Where data is
+                  stored, organized, and retrieved efficiently.
+                </p>
+                <div class="responsibilities">
+                  <div class="responsibility-item">Data Storage</div>
+                  <div class="responsibility-item">Data Retrieval</div>
+                  <div class="responsibility-item">Data Relationships</div>
+                  <div class="responsibility-item">Backup & Recovery</div>
+                </div>
+                <div class="tech-stack">
+                  <span class="tech-tag">MongoDB</span>
+                  <span class="tech-tag">MySQL</span>
+                  <span class="tech-tag">PostgreSQL</span>
+                  <span class="tech-tag">Redis</span>
+                </div>
+              </div>
             </div>
-        </nav>
+          </div>
+        </section>
 
-        <!-- Main Content Area -->
-        <main class="main-content">
-            <!-- Progress Bar -->
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
+        <!-- Section 2: Why Backend -->
+        <section class="section" id="section2">
+          <div class="section-header">
+            <span class="section-badge">Section 02</span>
+            <h1>Why Backend is Essential</h1>
+            <p class="section-subtitle">
+              Understanding the critical role of server-side development
+            </p>
+          </div>
+
+          <div class="content-grid">
+            <div class="problem-showcase">
+              <h3>🚫 Problems Without Backend</h3>
+              <div class="problem-list">
+                <div class="problem-item">
+                  <div class="problem-icon">💨</div>
+                  <div class="problem-content">
+                    <h4>No Data Persistence</h4>
+                    <p>Everything lost on page refresh</p>
+                  </div>
+                </div>
+                <div class="problem-item">
+                  <div class="problem-icon">🔓</div>
+                  <div class="problem-content">
+                    <h4>No Security</h4>
+                    <p>No authentication or authorization</p>
+                  </div>
+                </div>
+                <div class="problem-item">
+                  <div class="problem-icon">🚫</div>
+                  <div class="problem-content">
+                    <h4>No Business Logic</h4>
+                    <p>Cannot handle complex calculations</p>
+                  </div>
+                </div>
+                <div class="problem-item">
+                  <div class="problem-icon">👤</div>
+                  <div class="problem-content">
+                    <h4>Single User Only</h4>
+                    <p>Cannot handle multiple users</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!-- Section 1: Restaurant Analogy -->
-            <section class="section active" id="section1">
-                <div class="section-header">
-                    <span class="section-badge">Section 01</span>
-                    <h1>Restaurant Analogy for Web Application Development</h1>
-                    <p class="section-subtitle">Understanding complex web architecture through familiar dining
-                        experiences</p>
+            <div class="benefits-showcase">
+              <h3>✨ Backend Benefits</h3>
+              <div class="benefits-grid">
+                <div class="benefit-card">
+                  <div class="benefit-icon">💾</div>
+                  <h4>Data Management</h4>
+                  <p>
+                    Store, retrieve, and manipulate data efficiently across user
+                    sessions
+                  </p>
                 </div>
-
-                <div class="content-grid">
-                    <div class="intro-card">
-                        <h3>🍽️ Think of a Restaurant</h3>
-                        <p>Understanding web application development becomes intuitive when we compare it to how a
-                            restaurant
-                            operates. Every component has a specific role, and they all work together seamlessly to
-                            serve customers.</p>
-                        <div class="workflow-visual">
-                            <div class="workflow-step">Customer views menu</div>
-                            <div class="workflow-arrow">→</div>
-                            <div class="workflow-step">Waiter takes order</div>
-                            <div class="workflow-arrow">→</div>
-                            <div class="workflow-step">Kitchen prepares food</div>
-                            <div class="workflow-arrow">→</div>
-                            <div class="workflow-step">Waiter serves food</div>
-                        </div>
-                    </div>
-
-                    <div class="restaurant-grid">
-                        <div class="restaurant-card frontend">
-                            <div class="card-header">
-                                <div class="card-icon">👥</div>
-                                <h4>Dining Area + Menu</h4>
-                                <span class="role-badge">Frontend</span>
-                            </div>
-                            <p>Where customers sit and view options. The user interface that presents information and
-                                accepts input from users.</p>
-                            <div class="responsibilities">
-                                <div class="responsibility-item">User Interface Design</div>
-                                <div class="responsibility-item">User Experience</div>
-                                <div class="responsibility-item">Visual Presentation</div>
-                                <div class="responsibility-item">Input Collection</div>
-                            </div>
-                            <div class="tech-stack">
-                                <span class="tech-tag">HTML</span>
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Vue.js</span>
-                            </div>
-                        </div>
-
-                        <div class="restaurant-card api">
-                            <div class="card-header">
-                                <div class="card-icon">🧑‍💼</div>
-                                <h4>Waiter</h4>
-                                <span class="role-badge">API</span>
-                            </div>
-                            <p>Carries requests from customers to kitchen and brings responses back. The communication
-                                layer between frontend and backend.</p>
-                            <div class="responsibilities">
-                                <div class="responsibility-item">Request/Response Handling</div>
-                                <div class="responsibility-item">Data Transfer</div>
-                                <div class="responsibility-item">Communication Protocol</div>
-                                <div class="responsibility-item">Error Handling</div>
-                            </div>
-                            <div class="tech-stack">
-                                <span class="tech-tag">REST</span>
-                                <span class="tech-tag">GraphQL</span>
-                                <span class="tech-tag">JSON</span>
-                                <span class="tech-tag">HTTP</span>
-                            </div>
-                        </div>
-
-                        <div class="restaurant-card backend">
-                            <div class="card-header">
-                                <div class="card-icon">👨‍🍳</div>
-                                <h4>Kitchen + Chefs</h4>
-                                <span class="role-badge">Backend</span>
-                            </div>
-                            <p>Where orders are processed and food is prepared. The server-side logic and processing
-                                engine of applications.</p>
-                            <div class="responsibilities">
-                                <div class="responsibility-item">Business Logic</div>
-                                <div class="responsibility-item">Data Processing</div>
-                                <div class="responsibility-item">Authentication</div>
-                                <div class="responsibility-item">Server Management</div>
-                            </div>
-                            <div class="tech-stack">
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Java</span>
-                                <span class="tech-tag">Express.js</span>
-                            </div>
-                        </div>
-
-                        <div class="restaurant-card database">
-                            <div class="card-header">
-                                <div class="card-icon">🏪</div>
-                                <h4>Pantry</h4>
-                                <span class="role-badge">Database</span>
-                            </div>
-                            <p>Storage for all ingredients and supplies. Where data is stored, organized, and retrieved
-                                efficiently.</p>
-                            <div class="responsibilities">
-                                <div class="responsibility-item">Data Storage</div>
-                                <div class="responsibility-item">Data Retrieval</div>
-                                <div class="responsibility-item">Data Relationships</div>
-                                <div class="responsibility-item">Backup & Recovery</div>
-                            </div>
-                            <div class="tech-stack">
-                                <span class="tech-tag">MongoDB</span>
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">PostgreSQL</span>
-                                <span class="tech-tag">Redis</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="benefit-card">
+                  <div class="benefit-icon">🔒</div>
+                  <h4>Security</h4>
+                  <p>
+                    Authentication, authorization, encryption, and protection
+                    against attacks
+                  </p>
                 </div>
-            </section>
-
-            <!-- Section 2: Why Backend -->
-            <section class="section" id="section2">
-                <div class="section-header">
-                    <span class="section-badge">Section 02</span>
-                    <h1>Why Backend is Essential</h1>
-                    <p class="section-subtitle">Understanding the critical role of server-side development</p>
+                <div class="benefit-card">
+                  <div class="benefit-icon">⚙️</div>
+                  <h4>Business Logic</h4>
+                  <p>Complex calculations, workflows, and rule enforcement</p>
                 </div>
-
-                <div class="content-grid">
-                    <div class="problem-showcase">
-                        <h3>🚫 Problems Without Backend</h3>
-                        <div class="problem-list">
-                            <div class="problem-item">
-                                <div class="problem-icon">💨</div>
-                                <div class="problem-content">
-                                    <h4>No Data Persistence</h4>
-                                    <p>Everything lost on page refresh</p>
-                                </div>
-                            </div>
-                            <div class="problem-item">
-                                <div class="problem-icon">🔓</div>
-                                <div class="problem-content">
-                                    <h4>No Security</h4>
-                                    <p>No authentication or authorization</p>
-                                </div>
-                            </div>
-                            <div class="problem-item">
-                                <div class="problem-icon">🚫</div>
-                                <div class="problem-content">
-                                    <h4>No Business Logic</h4>
-                                    <p>Cannot handle complex calculations</p>
-                                </div>
-                            </div>
-                            <div class="problem-item">
-                                <div class="problem-icon">👤</div>
-                                <div class="problem-content">
-                                    <h4>Single User Only</h4>
-                                    <p>Cannot handle multiple users</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="benefits-showcase">
-                        <h3>✨ Backend Benefits</h3>
-                        <div class="benefits-grid">
-                            <div class="benefit-card">
-                                <div class="benefit-icon">💾</div>
-                                <h4>Data Management</h4>
-                                <p>Store, retrieve, and manipulate data efficiently across user sessions</p>
-                            </div>
-                            <div class="benefit-card">
-                                <div class="benefit-icon">🔒</div>
-                                <h4>Security</h4>
-                                <p>Authentication, authorization, encryption, and protection against attacks</p>
-                            </div>
-                            <div class="benefit-card">
-                                <div class="benefit-icon">⚙️</div>
-                                <h4>Business Logic</h4>
-                                <p>Complex calculations, workflows, and rule enforcement</p>
-                            </div>
-                            <div class="benefit-card">
-                                <div class="benefit-icon">📈</div>
-                                <h4>Scalability</h4>
-                                <p>Handle thousands of users and high traffic loads</p>
-                            </div>
-                            <div class="benefit-card">
-                                <div class="benefit-icon">🔌</div>
-                                <h4>Integration</h4>
-                                <p>Connect with databases, APIs, payment systems, and external services</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="benefit-card">
+                  <div class="benefit-icon">📈</div>
+                  <h4>Scalability</h4>
+                  <p>Handle thousands of users and high traffic loads</p>
                 </div>
-            </section>
-
-            <!-- Section 3: REST API -->
-            <section class="section" id="section3">
-                <div class="section-header">
-                    <span class="section-badge">Section 03</span>
-                    <h1>REST API Fundamentals</h1>
-                    <p class="section-subtitle">REpresentational State Transfer - The web communication standard</p>
+                <div class="benefit-card">
+                  <div class="benefit-icon">🔌</div>
+                  <h4>Integration</h4>
+                  <p>
+                    Connect with databases, APIs, payment systems, and external
+                    services
+                  </p>
                 </div>
-
-                <div class="content-grid">
-                    <div class="api-intro">
-                        <h3>📡 What is REST API?</h3>
-                        <p>REST is an architectural style for designing web services. It's a standardized way for
-                            applications to communicate over the internet, like having a universal language for all web
-                            applications.</p>
-                        <div class="principles-list">
-                            <div class="principle-item">
-                                <span class="principle-icon">🔄</span>
-                                <span><strong>Stateless:</strong> Each request contains all necessary information</span>
-                            </div>
-                            <div class="principle-item">
-                                <span class="principle-icon">🏗️</span>
-                                <span><strong>Client-Server:</strong> Clear separation of concerns</span>
-                            </div>
-                            <div class="principle-item">
-                                <span class="principle-icon">💾</span>
-                                <span><strong>Cacheable:</strong> Responses can be cached for performance</span>
-                            </div>
-                            <div class="principle-item">
-                                <span class="principle-icon">🎯</span>
-                                <span><strong>Uniform Interface:</strong> Consistent way to access resources</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="http-methods-showcase">
-                        <h3>HTTP Methods Explained</h3>
-                        <div class="methods-grid">
-                            <div class="method-card get">
-                                <div class="method-header">
-                                    <span class="method-tag">GET</span>
-                                    <h4>Retrieve/Read Data</h4>
-                                </div>
-                                <p class="method-description">Fetch information without changing anything on the server.
-                                    Like looking at a menu.</p>
-                                <div class="method-example">
-                                    <code>GET /api/users</code>
-                                    <span class="example-text">Retrieve all users</span>
-                                </div>
-                                <div class="method-properties">
-                                    <span class="property safe">Safe</span>
-                                    <span class="property idempotent">Idempotent</span>
-                                </div>
-                            </div>
-
-                            <div class="method-card post">
-                                <div class="method-header">
-                                    <span class="method-tag">POST</span>
-                                    <h4>Create New Data</h4>
-                                </div>
-                                <p class="method-description">Add new information to the system. Like placing a new
-                                    order.</p>
-                                <div class="method-example">
-                                    <code>POST /api/users</code>
-                                    <span class="example-text">Create a new user account</span>
-                                </div>
-                                <div class="method-properties">
-                                    <span class="property not-safe">Not Safe</span>
-                                    <span class="property not-idempotent">Not Idempotent</span>
-                                </div>
-                            </div>
-
-                            <div class="method-card put">
-                                <div class="method-header">
-                                    <span class="method-tag">PUT</span>
-                                    <h4>Update/Replace Data</h4>
-                                </div>
-                                <p class="method-description">Replace existing information completely. Like changing
-                                    your entire order.</p>
-                                <div class="method-example">
-                                    <code>PUT /api/users/123</code>
-                                    <span class="example-text">Update all details for user 123</span>
-                                </div>
-                                <div class="method-properties">
-                                    <span class="property not-safe">Not Safe</span>
-                                    <span class="property idempotent">Idempotent</span>
-                                </div>
-                            </div>
-
-                            <div class="method-card patch">
-                                <div class="method-header">
-                                    <span class="method-tag">PATCH</span>
-                                    <h4>Partial Update</h4>
-                                </div>
-                                <p class="method-description">Modify only specific parts of existing data. Like adding
-                                    extra cheese to your order.</p>
-                                <div class="method-example">
-                                    <code>PATCH /api/users/123</code>
-                                    <span class="example-text">Update only email for user 123</span>
-                                </div>
-                                <div class="method-properties">
-                                    <span class="property not-safe">Not Safe</span>
-                                    <span class="property not-idempotent">Not Idempotent</span>
-                                </div>
-                            </div>
-
-                            <div class="method-card delete">
-                                <div class="method-header">
-                                    <span class="method-tag">DELETE</span>
-                                    <h4>Remove Data</h4>
-                                </div>
-                                <p class="method-description">Remove information from the system. Like canceling your
-                                    order.</p>
-                                <div class="method-example">
-                                    <code>DELETE /api/users/123</code>
-                                    <span class="example-text">Delete user account 123</span>
-                                </div>
-                                <div class="method-properties">
-                                    <span class="property not-safe">Not Safe</span>
-                                    <span class="property idempotent">Idempotent</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 4: JavaScript Asynchronous Processing -->
-            <section class="section" id="section4">
-                <!-- Content will be loaded dynamically -->
-            </section>
-
-            <!-- Section 5: V8 Engine -->
-            <section class="section" id="section5">
-                <!-- Content will be loaded dynamically -->
-            </section>
-
-            <!-- Section 6: Node.js -->
-            <section class="section" id="section6">
-                <!-- Content will be loaded dynamically -->
-            </section>
-
-            <!-- Section 7: NPM -->
-            <section class="section" id="section7">
-                <!-- Content will be loaded dynamically -->
-            </section>
-
-            <!-- Section 8: Express.js -->
-            <section class="section" id="section8">
-                <!-- Content will be loaded dynamically -->
-            </section>
-
-            <!-- Section 9: Building REST API -->
-            <section class="section" id="section9">
-                <!-- Content will be loaded dynamically -->
-            </section>
-
-            <!-- Navigation Controls -->
-            <div class="nav-controls">
-                <button class="nav-btn" id="prevBtn" disabled>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                        <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                    Previous
-                </button>
-                <span class="section-indicator" id="sectionIndicator">1 / 9</span>
-                <button class="nav-btn" id="nextBtn">
-                    Next
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                        <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
+              </div>
             </div>
-        </main>
+          </div>
+        </section>
+
+        <!-- Section 3: REST API -->
+        <section class="section" id="section3">
+          <div class="section-header">
+            <span class="section-badge">Section 03</span>
+            <h1>REST API Fundamentals</h1>
+            <p class="section-subtitle">
+              REpresentational State Transfer - The web communication standard
+            </p>
+          </div>
+
+          <div class="content-grid">
+            <div class="api-intro">
+              <h3>📡 What is REST API?</h3>
+              <p>
+                REST is an architectural style for designing web services. It's
+                a standardized way for applications to communicate over the
+                internet, like having a universal language for all web
+                applications.
+              </p>
+              <div class="principles-list">
+                <div class="principle-item">
+                  <span class="principle-icon">🔄</span>
+                  <span
+                    ><strong>Stateless:</strong> Each request contains all
+                    necessary information</span
+                  >
+                </div>
+                <div class="principle-item">
+                  <span class="principle-icon">🏗️</span>
+                  <span
+                    ><strong>Client-Server:</strong> Clear separation of
+                    concerns</span
+                  >
+                </div>
+                <div class="principle-item">
+                  <span class="principle-icon">💾</span>
+                  <span
+                    ><strong>Cacheable:</strong> Responses can be cached for
+                    performance</span
+                  >
+                </div>
+                <div class="principle-item">
+                  <span class="principle-icon">🎯</span>
+                  <span
+                    ><strong>Uniform Interface:</strong> Consistent way to
+                    access resources</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="http-methods-showcase">
+              <h3>HTTP Methods Explained</h3>
+              <div class="methods-grid">
+                <div class="method-card get">
+                  <div class="method-header">
+                    <span class="method-tag">GET</span>
+                    <h4>Retrieve/Read Data</h4>
+                  </div>
+                  <p class="method-description">
+                    Fetch information without changing anything on the server.
+                    Like looking at a menu.
+                  </p>
+                  <div class="method-example">
+                    <code>GET /api/users</code>
+                    <span class="example-text">Retrieve all users</span>
+                  </div>
+                  <div class="method-properties">
+                    <span class="property safe">Safe</span>
+                    <span class="property idempotent">Idempotent</span>
+                  </div>
+                </div>
+
+                <div class="method-card post">
+                  <div class="method-header">
+                    <span class="method-tag">POST</span>
+                    <h4>Create New Data</h4>
+                  </div>
+                  <p class="method-description">
+                    Add new information to the system. Like placing a new order.
+                  </p>
+                  <div class="method-example">
+                    <code>POST /api/users</code>
+                    <span class="example-text">Create a new user account</span>
+                  </div>
+                  <div class="method-properties">
+                    <span class="property not-safe">Not Safe</span>
+                    <span class="property not-idempotent">Not Idempotent</span>
+                  </div>
+                </div>
+
+                <div class="method-card put">
+                  <div class="method-header">
+                    <span class="method-tag">PUT</span>
+                    <h4>Update/Replace Data</h4>
+                  </div>
+                  <p class="method-description">
+                    Replace existing information completely. Like changing your
+                    entire order.
+                  </p>
+                  <div class="method-example">
+                    <code>PUT /api/users/123</code>
+                    <span class="example-text"
+                      >Update all details for user 123</span
+                    >
+                  </div>
+                  <div class="method-properties">
+                    <span class="property not-safe">Not Safe</span>
+                    <span class="property idempotent">Idempotent</span>
+                  </div>
+                </div>
+
+                <div class="method-card patch">
+                  <div class="method-header">
+                    <span class="method-tag">PATCH</span>
+                    <h4>Partial Update</h4>
+                  </div>
+                  <p class="method-description">
+                    Modify only specific parts of existing data. Like adding
+                    extra cheese to your order.
+                  </p>
+                  <div class="method-example">
+                    <code>PATCH /api/users/123</code>
+                    <span class="example-text"
+                      >Update only email for user 123</span
+                    >
+                  </div>
+                  <div class="method-properties">
+                    <span class="property not-safe">Not Safe</span>
+                    <span class="property not-idempotent">Not Idempotent</span>
+                  </div>
+                </div>
+
+                <div class="method-card delete">
+                  <div class="method-header">
+                    <span class="method-tag">DELETE</span>
+                    <h4>Remove Data</h4>
+                  </div>
+                  <p class="method-description">
+                    Remove information from the system. Like canceling your
+                    order.
+                  </p>
+                  <div class="method-example">
+                    <code>DELETE /api/users/123</code>
+                    <span class="example-text">Delete user account 123</span>
+                  </div>
+                  <div class="method-properties">
+                    <span class="property not-safe">Not Safe</span>
+                    <span class="property idempotent">Idempotent</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4: JavaScript Asynchronous Processing -->
+        <section class="section" id="section4">
+          <!-- Content will be loaded dynamically -->
+        </section>
+
+        <!-- Section 5: V8 Engine -->
+        <section class="section" id="section5">
+          <!-- Content will be loaded dynamically -->
+        </section>
+
+        <!-- Section 6: Node.js -->
+        <section class="section" id="section6">
+          <!-- Content will be loaded dynamically -->
+        </section>
+
+        <!-- Section 7: NPM -->
+        <section class="section" id="section7">
+          <!-- Content will be loaded dynamically -->
+        </section>
+
+        <!-- Section 8: Express.js -->
+        <section class="section" id="section8">
+          <!-- Content will be loaded dynamically -->
+        </section>
+
+        <!-- Section 9: Building REST API -->
+        <section class="section" id="section9">
+          <!-- Content will be loaded dynamically -->
+        </section>
+
+        <!-- Navigation Controls -->
+        <div class="nav-controls">
+          <button class="nav-btn" id="prevBtn" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M15 18l-6-6 6-6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Previous
+          </button>
+          <span class="section-indicator" id="sectionIndicator">1 / 9</span>
+          <button class="nav-btn" id="nextBtn">
+            Next
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M9 18l6-6-6-6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </main>
+      <div class="modal hidden" id="transcriptModal">
+        <div class="modal-content">
+          <div class="modal-body">
+            <img
+              src="restaurant_analogy.png"
+              alt="Full Presentation Transcript"
+            />
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script src="app.js"></script>
-</body>
-
+  </body>
 </html>
